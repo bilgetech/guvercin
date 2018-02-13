@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">@color/dark_purple</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="dark_purple">#42073A</color>
+    <color name="indigo">#0F0363</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_white">#20FFFFFF</color>
 </resources>
