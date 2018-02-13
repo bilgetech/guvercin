@@ -2,6 +2,7 @@ package com.bilgetech.guvercin;
 
 import android.content.Context;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.animation.DynamicAnimation;
 import android.support.animation.SpringAnimation;
 import android.support.animation.SpringForce;
@@ -57,6 +58,16 @@ public class PigeonButton extends AppCompatImageButton {
     public void showUp() {
         setVisibility(View.VISIBLE);
         startSpringAnimation(0.3f, SpringForce.STIFFNESS_LOW);
+        startTimerAfterDelay();
+    }
+
+    private void startTimerAfterDelay() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                attentionTimer.start();
+            }
+        }, ATTENTION_INTERVAL);
     }
 
 
@@ -70,6 +81,8 @@ public class PigeonButton extends AppCompatImageButton {
                 endAction.run();
             }
         });
+
+        startTimerAfterDelay();
     }
 
     public void deactivate(final Runnable endAction) {
@@ -82,6 +95,8 @@ public class PigeonButton extends AppCompatImageButton {
                 endAction.run();
             }
         });
+
+        attentionTimer.cancel();
     }
 
     private void startPinchDownAnimation() {
@@ -137,6 +152,10 @@ public class PigeonButton extends AppCompatImageButton {
                 }
             }
         }).start();
+    }
+
+    public void onResume() {
+        startTimerAfterDelay();
     }
 
     public void onPause() {

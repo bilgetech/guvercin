@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 pigeonButton.showUp();
             }
         }, INITIAL_ANIMATION_START_DELAY);
+
+        if(pigeonButton.isActive()) {
+            pulseAnimationView.show();
+        }
+
+        pigeonButton.onResume();
     }
 
     @Override
