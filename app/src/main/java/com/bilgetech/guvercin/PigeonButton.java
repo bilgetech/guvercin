@@ -15,7 +15,7 @@ public class PigeonButton extends AppCompatImageButton {
     public static final int MAX_ATTENTION_COUNT = 20;
 
     private boolean isActive;
-    private boolean isAnimating;
+    private boolean isRotating;
 
     private CountDownTimer attentionTimer;
 
@@ -36,7 +36,7 @@ public class PigeonButton extends AppCompatImageButton {
 
     private void init() {
         isActive = false;
-        isAnimating = false;
+        isRotating = false;
         setVisibility(INVISIBLE);
         setBackgroundResource(R.color.transparent);
         setImageResource(R.drawable.pigeon_circular_passive);
@@ -45,7 +45,7 @@ public class PigeonButton extends AppCompatImageButton {
 
         attentionTimer = new CountDownTimer(MAX_ATTENTION_COUNT * ATTENTION_INTERVAL, ATTENTION_INTERVAL) {
             public void onTick(long millisUntilFinished) {
-                if (!isActive && !isAnimating) {
+                if (!isActive && !isRotating) {
                     startPinchDownAnimation();
                 }
             }
@@ -100,29 +100,24 @@ public class PigeonButton extends AppCompatImageButton {
     }
 
     private void startPinchDownAnimation() {
-        isAnimating = true;
         animate().scaleX(0.95f).scaleY(0.95f).setDuration(100).withEndAction(new Runnable() {
             @Override
             public void run() {
-                isAnimating = false;
                 startSpringAnimation(0.06f, SpringForce.STIFFNESS_LOW);
             }
         }).start();
     }
 
     private void startPinchUpAnimation() {
-        isAnimating = true;
         animate().scaleX(1.05f).scaleY(1.05f).setDuration(100).withEndAction(new Runnable() {
             @Override
             public void run() {
-                isAnimating = false;
                 startSpringAnimation(0.1f, SpringForce.STIFFNESS_LOW);
             }
         }).start();
     }
 
     private void startSpringAnimation(float dampingRatio, float stiffness) {
-        isAnimating = true;
         SpringForce spring = new SpringForce(1f)
                 .setDampingRatio(dampingRatio)
                 .setStiffness(stiffness);
@@ -130,23 +125,16 @@ public class PigeonButton extends AppCompatImageButton {
         SpringAnimation springXAnimation = new SpringAnimation(this, DynamicAnimation.SCALE_X).setSpring(spring);
         SpringAnimation springYAnimation = new SpringAnimation(this, DynamicAnimation.SCALE_Y).setSpring(spring);
 
-        springXAnimation.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
-            @Override
-            public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-                isAnimating = false;
-            }
-        });
-
         springXAnimation.start();
         springYAnimation.start();
     }
 
     private void startRotationAnimation(float angle, final Runnable endAction) {
-        isAnimating = true;
+        isRotating = true;
         animate().rotationBy(angle).setDuration(1000).withEndAction(new Runnable() {
             @Override
             public void run() {
-                isAnimating = false;
+                isRotating = false;
                 if (endAction != null) {
                     endAction.run();
                 }
@@ -167,15 +155,7 @@ public class PigeonButton extends AppCompatImageButton {
         return isActive;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public boolean isAnimating() {
-        return isAnimating;
-    }
-
-    public void setAnimating(boolean animating) {
-        isAnimating = animating;
+    public boolean isRotating() {
+        return isRotating;
     }
 }

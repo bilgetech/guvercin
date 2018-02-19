@@ -7,8 +7,8 @@
     <com.bilgetech.guvercin.PulseAnimationView
         android:id="@+id/pulseAnimationView"
         android:layout_width="match_parent"
-        android:visibility="invisible"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="124dp"
@@ -22,6 +22,20 @@
         android:id="@+id/pigeonButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
+
+
+    <ImageView
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:scaleX="1.4"
+        android:scaleY="1.4"
+        android:tint="@color/white"
+        android:src="@drawable/ic_menu_close"
+        android:padding="8dp"/>
 
 </RelativeLayout>

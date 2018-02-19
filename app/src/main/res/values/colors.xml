@@ -8,4 +8,5 @@
     <color name="indigo">#0F0363</color>
     <color name="transparent">#00000000</color>
     <color name="transparent_white">#20FFFFFF</color>
+    <color name="white">#ffffff</color>
 </resources>

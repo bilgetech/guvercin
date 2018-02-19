@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:constantSize="true"
+    tools:ignore="NewApi">
+
+    <item
+        android:id="@+id/pressed_selected"
+        android:drawable="@drawable/vd_menu"
+        android:state_pressed="true"
+        android:state_selected="true" />
+
+    <item
+        android:id="@+id/menu_state"
+        android:drawable="@drawable/vd_menu"
+        android:state_selected="true" />
+
+    <item
+        android:id="@+id/close_state"
+        android:drawable="@drawable/vd_close" />
+
+    <transition
+        android:drawable="@drawable/avd_close_to_menu"
+        android:fromId="@id/pressed_selected"
+        android:toId="@id/menu_state" />
+
+    <transition
+        android:drawable="@drawable/avd_menu_to_close"
+        android:fromId="@id/pressed_selected"
+        android:toId="@id/close_state" />
+
+</animated-selector>

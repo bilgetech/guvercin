@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     public static final int INITIAL_ANIMATION_START_DELAY = 500;
 
     private PigeonButton pigeonButton;
     private PulseAnimationView pulseAnimationView;
+    private ImageView menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
 
         pigeonButton = findViewById(R.id.pigeonButton);
         pulseAnimationView = findViewById(R.id.pulseAnimationView);
+        menuButton = findViewById(R.id.menuButton);
 
         pigeonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pigeonButton.isAnimating()) return;
+                if (pigeonButton.isRotating()) return;
 
                 if (pigeonButton.isActive()) {
                     pigeonButton.deactivate(new Runnable() {
@@ -41,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menuButton.setSelected(!menuButton.isSelected());
+            }
+        });
     }
 
     @Override
@@ -53,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, INITIAL_ANIMATION_START_DELAY);
 
-        if(pigeonButton.isActive()) {
+        if (pigeonButton.isActive()) {
             pulseAnimationView.show();
         }
 
