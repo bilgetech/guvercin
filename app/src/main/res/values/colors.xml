@@ -9,4 +9,7 @@
     <color name="transparent">#00000000</color>
     <color name="transparent_white">#20FFFFFF</color>
     <color name="white">#ffffff</color>
+    <color name="yellow">#e8e34e</color>
+    <color name="orange">#d48d32</color>
+    <color name="white_80">#80ffffff</color>
 </resources>

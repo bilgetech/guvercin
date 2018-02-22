@@ -1,14 +1,18 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorHint">@color/white_80</item>
+        <item name="colorControlHighlight">@color/orange</item>
+        <item name="colorButtonNormal">@color/yellow</item>
 
-        <item name="android:navigationBarColor">@color/indigo</item>
-
-        <item name="android:windowContentTransitions">true</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/indigo</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
-
 </resources>

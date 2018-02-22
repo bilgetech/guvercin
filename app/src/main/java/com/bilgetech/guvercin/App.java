@@ -5,6 +5,8 @@ import android.app.Application;
 import com.bilgetech.guvercin.network.Api;
 import com.bilgetech.guvercin.network.ApiGenerator;
 
+import io.paperdb.Paper;
+
 public class App extends Application {
     private static App instance;
     private static Api api;
@@ -14,6 +16,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+
+        Paper.init(this);
     }
 
     public static App getInstance() {

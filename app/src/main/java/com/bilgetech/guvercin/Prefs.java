@@ -9,6 +9,7 @@ public class Prefs {
     // Instance Fields
     private boolean showNotif;
     private String url;
+    private String phone;
 
     public boolean isShowNotif() {
         return showNotif;
@@ -25,6 +26,15 @@ public class Prefs {
 
     public Prefs setUrl(String url) {
         this.url = url;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Prefs setPhone(String phone) {
+        this.phone = phone;
         return this;
     }
 

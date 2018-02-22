@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">guvercin</string>
     <string name="transition_logo">logo</string>
+    <string name="hint_url">http://your.domain.com</string>
+    <string name="phone_number">+905554443322</string>
+    <string name="save">Save</string>
+    <string name="transition_pigeon">pigeon</string>
 </resources>

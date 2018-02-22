@@ -6,9 +6,11 @@ import android.os.Handler;
 import android.support.animation.DynamicAnimation;
 import android.support.animation.SpringAnimation;
 import android.support.animation.SpringForce;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.AnticipateInterpolator;
 
 public class PigeonButton extends AppCompatImageButton {
     public static final int ATTENTION_INTERVAL = 6000; // in millis
@@ -59,6 +61,24 @@ public class PigeonButton extends AppCompatImageButton {
         setVisibility(View.VISIBLE);
         startSpringAnimation(0.3f, SpringForce.STIFFNESS_LOW);
         startTimerAfterDelay();
+    }
+
+    public void hide(@Nullable final Runnable endAction) {
+        attentionTimer.cancel();
+        animate()
+                .scaleX(0)
+                .scaleY(0)
+                .setDuration(300)
+                .setInterpolator(new AnticipateInterpolator())
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (endAction != null) {
+                            endAction.run();
+                        }
+                    }
+                })
+                .start();
     }
 
     private void startTimerAfterDelay() {
