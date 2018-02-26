@@ -30,8 +30,6 @@ public class ToggleFragment extends Fragment {
         pigeonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pigeonButton.isRotating()) return;
-
                 if (pigeonButton.isActive()) {
                     Prefs.get().setActive(false).save();
                     pigeonButton.deactivate(new Runnable() {

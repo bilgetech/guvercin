@@ -93,7 +93,7 @@ public class PigeonButton extends AppCompatImageButton {
 
     public void activate(final Runnable endAction) {
         setActive(true);
-        startRotationAnimation(720, new Runnable() {
+        startRotationAnimation(360, new Runnable() {
             @Override
             public void run() {
                 startPinchUpAnimation();
@@ -106,7 +106,7 @@ public class PigeonButton extends AppCompatImageButton {
 
     public void deactivate(final Runnable endAction) {
         setActive(false);
-        startRotationAnimation(-720, new Runnable() {
+        startRotationAnimation(-360, new Runnable() {
             @Override
             public void run() {
                 startPinchDownAnimation();
@@ -160,7 +160,8 @@ public class PigeonButton extends AppCompatImageButton {
 
     private void startRotationAnimation(float angle, final Runnable endAction) {
         isRotating = true;
-        animate().rotationBy(angle).setDuration(1000).withEndAction(new Runnable() {
+        float duration = Math.abs(this.getRotation() - angle) / 720f * 800f + 10f;
+        animate().rotation(angle).setDuration((long) duration).withEndAction(new Runnable() {
             @Override
             public void run() {
                 isRotating = false;
