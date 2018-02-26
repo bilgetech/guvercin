@@ -33,6 +33,7 @@ public class ToggleFragment extends Fragment {
                 if (pigeonButton.isRotating()) return;
 
                 if (pigeonButton.isActive()) {
+                    Prefs.get().setActive(false).save();
                     pigeonButton.deactivate(new Runnable() {
                         @Override
                         public void run() {
@@ -40,6 +41,7 @@ public class ToggleFragment extends Fragment {
                         }
                     });
                 } else {
+                    Prefs.get().setActive(true).save();
                     pigeonButton.activate(new Runnable() {
                         @Override
                         public void run() {
@@ -54,6 +56,8 @@ public class ToggleFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        pigeonButton.setActive(Prefs.get().isActive());
 
         new Handler().postDelayed(new Runnable() {
             @Override

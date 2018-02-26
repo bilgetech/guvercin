@@ -92,8 +92,7 @@ public class PigeonButton extends AppCompatImageButton {
 
 
     public void activate(final Runnable endAction) {
-        isActive = true;
-        setImageResource(R.drawable.pigeon_circular_active);
+        setActive(true);
         startRotationAnimation(720, new Runnable() {
             @Override
             public void run() {
@@ -106,8 +105,7 @@ public class PigeonButton extends AppCompatImageButton {
     }
 
     public void deactivate(final Runnable endAction) {
-        isActive = false;
-        setImageResource(R.drawable.pigeon_circular_passive);
+        setActive(false);
         startRotationAnimation(-720, new Runnable() {
             @Override
             public void run() {
@@ -117,6 +115,17 @@ public class PigeonButton extends AppCompatImageButton {
         });
 
         attentionTimer.cancel();
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+        updateUI();
+    }
+
+    public void updateUI() {
+        setImageResource(isActive
+                ? R.drawable.pigeon_circular_active
+                : R.drawable.pigeon_circular_passive);
     }
 
     private void startPinchDownAnimation() {
