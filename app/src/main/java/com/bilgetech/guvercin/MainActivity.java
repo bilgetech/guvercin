@@ -45,4 +45,13 @@ public class MainActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.fragmentContainer, fragment).commitAllowingStateLoss();
     }
+
+    @Override
+    public void onBackPressed() {
+        if(menuButton.isSelected()) {
+             menuButton.performClick();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

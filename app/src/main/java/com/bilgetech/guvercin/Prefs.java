@@ -10,6 +10,7 @@ public class Prefs {
     private boolean showNotif;
     private String url;
     private String phone;
+    private boolean isActive;
 
     public boolean isShowNotif() {
         return showNotif;
@@ -35,6 +36,15 @@ public class Prefs {
 
     public Prefs setPhone(String phone) {
         this.phone = phone;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public Prefs setActive(boolean active) {
+        isActive = active;
         return this;
     }
 
