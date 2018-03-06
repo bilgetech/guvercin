@@ -35,10 +35,23 @@ public class SettingsFragment extends Fragment {
                         .setUrl(urlEdit.getText().toString())
                         .setPhone(phoneEdit.getText().toString())
                         .save();
+
+                SmsService.stop();
+
+                if(Prefs.get().isReadyToConnect()) {
+                    SmsService.start();
+                }
             }
         });
 
         phoneEdit.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         String url = Prefs.get().getUrl();
         String phone = Prefs.get().getPhone();
@@ -50,12 +63,5 @@ public class SettingsFragment extends Fragment {
         if(!TextUtils.isEmpty(phone)) {
             phoneEdit.setText(phone);
         }
-
-        return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 }

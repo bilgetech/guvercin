@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.bilgetech.guvercin.network.Api;
 import com.bilgetech.guvercin.network.ApiGenerator;
+import com.squareup.otto.Bus;
 
 import io.paperdb.Paper;
 
@@ -11,6 +12,7 @@ public class App extends Application {
     private static App instance;
     private static Api api;
     private static String lastUrl;
+    private Bus bus = new Bus();
 
     @Override
     public void onCreate() {
@@ -32,5 +34,9 @@ public class App extends Application {
             lastUrl = url;
         }
         return api;
+    }
+
+    public Bus getBus() {
+        return bus;
     }
 }

@@ -5,4 +5,6 @@
     <string name="phone_number">+905554443322</string>
     <string name="save">Save</string>
     <string name="transition_pigeon">pigeon</string>
+    <string name="rationale_sms">You need to give sms permissions to make Pigeon work. We won\'t send any SMS messages.</string>
+    <string name="you_must_configure_pigeon">You must configure Pigeon before activating it. Click the hamburger menu to enter your url and phone number.</string>
 </resources>

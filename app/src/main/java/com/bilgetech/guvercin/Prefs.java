@@ -1,5 +1,7 @@
 package com.bilgetech.guvercin;
 
+import android.text.TextUtils;
+
 import io.paperdb.Paper;
 
 public class Prefs {
@@ -46,6 +48,10 @@ public class Prefs {
     public Prefs setActive(boolean active) {
         isActive = active;
         return this;
+    }
+
+    public boolean isReadyToConnect() {
+        return !TextUtils.isEmpty(url) && !TextUtils.isEmpty(phone);
     }
 
     public static Prefs get() {

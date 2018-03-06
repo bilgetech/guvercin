@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
+
     private ImageView logoImage;
 
     @Override
@@ -22,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onResume();
         startTransitionAfterSomeTime();
     }
+
 
     private void startTransitionAfterSomeTime() {
         new Handler().postDelayed(new Runnable() {
@@ -43,6 +45,6 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, 500);
+        }, 1000);
     }
 }
