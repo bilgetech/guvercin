@@ -20,6 +20,10 @@ public class App extends Application {
         instance = this;
 
         Paper.init(this);
+
+        if(Prefs.get().isActive()) {
+            SmsService.start();
+        }
     }
 
     public static App getInstance() {
